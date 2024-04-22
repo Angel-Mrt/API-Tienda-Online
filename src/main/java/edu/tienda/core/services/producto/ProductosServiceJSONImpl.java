@@ -1,4 +1,4 @@
-package edu.tienda.core.services;
+package edu.tienda.core.services.producto;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Primary
-@Service("JSON")
+@Service
 @ConditionalOnProperty(
         value = "productos.estrategia",
         havingValue = "EN_JSON"
@@ -29,5 +29,25 @@ public class ProductosServiceJSONImpl implements ProductoService{
         }catch (IOException e){
             throw new RuntimeException();
         }
+    }
+
+    @Override
+    public List<Producto> getProductosByName() {
+        return null;
+    }
+
+    @Override
+    public List<Producto> getProductosByPrecio() {
+        return null;
+    }
+
+    @Override
+    public List<Producto> getProductosByPrecioGreaterThanAndStockLessThan() {
+        return null;
+    }
+
+    @Override
+    public void saveProducto(Producto producto) {
+
     }
 }

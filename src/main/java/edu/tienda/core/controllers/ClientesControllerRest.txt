@@ -1,0 +1,32 @@
+package edu.tienda.core.controllers;
+
+import edu.tienda.core.configurations.ConfigurationParameters;
+import edu.tienda.core.domain.Cliente;
+import edu.tienda.core.services.cliente.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/clientess")
+public class ClientesControllerRest {
+
+    @Autowired
+    @Lazy
+    private ClienteService clienteService;
+
+    @Autowired
+    private ConfigurationParameters configurationParameters;
+
+    @GetMapping
+    public ResponseEntity<?>getClientes() {
+        System.out.println("params: " +  configurationParameters.toString());
+        List<Cliente> clientes = clienteService.getClientes();
+        return ResponseEntity.ok(clientes);
+    }
+}

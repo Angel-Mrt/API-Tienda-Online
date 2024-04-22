@@ -1,0 +1,37 @@
+package edu.tienda.core.services;
+
+import edu.tienda.core.domain.Cliente;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+@Lazy
+@Slf4j
+@Service("MEMORY")
+@ConditionalOnProperty(
+        value = "productos.estrategia",
+        havingValue = "EN_MEMORIA"
+)
+
+public class ClientesServiceImpl implements ClienteService {
+
+    private List<Cliente> clientes = new ArrayList<>(Arrays.asList(
+            new Cliente(1,"Luis", "1234","Luis"),
+            new Cliente(2,"Angel", "1234","Angel"),
+            new Cliente(3,"Malagon", "1234","Malagon"),
+            new Cliente(4,"Henry", "1234","Martin")
+    ));
+
+    public ClientesServiceImpl(){
+        log.info("Se esta construyendo un objeto de la clase ClientesServiceImpl.");
+    }
+    @Override
+    public List<Cliente> getClientes() {
+return clientes;
+    }
+}

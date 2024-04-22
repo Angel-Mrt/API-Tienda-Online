@@ -16,9 +16,9 @@ import java.util.List;
 @RestController
 public class ClienteRestController {
     private List<Cliente> clientes = new ArrayList<>(Arrays.asList(
-        new Cliente("arm", "1234", "Armstrong"),
-        new Cliente("ald", "1234", "Aldrin"),
-        new Cliente("col", "1234", "Collins")
+        new Cliente(1,"arm", "1234", "Armstrong"),
+        new Cliente(2,"ald", "1234", "Aldrin"),
+        new Cliente(3,"col", "1234", "Collins")
 
     ));
 
